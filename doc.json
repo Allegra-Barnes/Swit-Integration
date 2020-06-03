@@ -1,0 +1,5265 @@
+{
+    "schemes": ["https"],
+    "swagger": "2.0",
+    "info": {
+        "description": "This is a SWIT Open Api server.",
+        "title": "SWIT Open API",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "http://www.swagger.io/support",
+            "email": "support@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "app.swit.dev",
+    "basePath": "/",
+    "paths": {
+        "/api/channel.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "channel:write",
+                            "channel:admin"
+                        ]
+                    }
+                ],
+                "description": "add channel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Channel"
+                ],
+                "summary": "Add Channel",
+                "parameters": [
+                    {
+                        "description": "add channel",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AddChannelParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK fjeiofjsaeiofj e ef jei iej jie jifej",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.AddChannelResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/channel.createDirect": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "channel:write",
+                            "channel:admin"
+                        ]
+                    }
+                ],
+                "description": "add direct channel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Channel"
+                ],
+                "summary": "Add Direct Channel",
+                "parameters": [
+                    {
+                        "description": "add direct channel",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AddDirectChannelParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.AddDirectChannelResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/channel.info": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "channel:read",
+                            "channel:admin"
+                        ]
+                    }
+                ],
+                "description": "get channel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Channel"
+                ],
+                "summary": "Get Channel",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ws_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ch_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.GetChannelResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/channel.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "channel:read",
+                            "channel:admin"
+                        ]
+                    }
+                ],
+                "description": "get channel list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Channel"
+                ],
+                "summary": "List Channel",
+                "parameters": [
+                    {
+                        "type": "boolean",
+                        "name": "exclude_archived",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "types",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "ws_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.GetChannelListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/channel.update": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "channel:write",
+                            "channel:admin"
+                        ]
+                    }
+                ],
+                "description": "put channel",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Channel"
+                ],
+                "summary": "Put Channel",
+                "parameters": [
+                    {
+                        "description": "put channel",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.PutChannelParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.PutChannelResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/channel.user.invite": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "channel:write",
+                            "channel:admin"
+                        ]
+                    }
+                ],
+                "description": "add channel user invite",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Channel"
+                ],
+                "summary": "Channel User Invite",
+                "parameters": [
+                    {
+                        "description": "AddChannelUserInviteParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AddChannelUserInviteParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.AddChannelUserInviteResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/channel.user.joinableList": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "channel:read",
+                            "channel:admin"
+                        ]
+                    }
+                ],
+                "description": "get channel user list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Channel"
+                ],
+                "summary": "List Channel Joinable User List",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ch_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetChannelUserJoinableListResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/channel.user.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "channel:read",
+                            "channel:admin"
+                        ]
+                    }
+                ],
+                "description": "get channel user list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Channel"
+                ],
+                "summary": "List Channel User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ch_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetChannelUserListResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/idea.comment.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "idea:write",
+                            "idea:admin"
+                        ]
+                    }
+                ],
+                "description": "아이데이션 코멘트 생성",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "create idea comment",
+                "parameters": [
+                    {
+                        "description": "create idea comment",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/idea.CreateIdeaCommentParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/idea.CreateIdeaCommentResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/idea.comment.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "idea:read",
+                            "idea:admin"
+                        ]
+                    }
+                ],
+                "description": "아이데이션 코멘트 리스트 가져옴",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "get idea comment list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "idea_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "ch_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/idea.GetIdeaCommentListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/idea.comment.remove": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "idea:write",
+                            "idea:admin"
+                        ]
+                    }
+                ],
+                "description": "아이데이션 코멘트 삭제",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "delete idea comment",
+                "parameters": [
+                    {
+                        "description": "delete idea comment",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/idea.DelIdeaCommentParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/idea.DelIdeaCommentResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/idea.create": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "idea:read",
+                            "idea:admin"
+                        ]
+                    }
+                ],
+                "description": "아이데이션 리스트를 가져옴",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Get Idea List",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "ch_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/idea.GetIdeaListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "idea:write",
+                            "idea:admin"
+                        ]
+                    }
+                ],
+                "description": "아이데이션을 생성",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "CreateIdea",
+                "parameters": [
+                    {
+                        "description": "idea param",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/idea.CreateIdeaParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/idea.CreateIdeaResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/idea.delete": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "idea:write",
+                            "idea:admin"
+                        ]
+                    }
+                ],
+                "description": "아이데이션을 삭제",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "delete Idea",
+                "parameters": [
+                    {
+                        "description": "del idea param",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/idea.DelIdeaParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/idea.DelIdeaResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/idea.info": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "idea:read",
+                            "idea:admin"
+                        ]
+                    }
+                ],
+                "description": "아이데이션을 가져옴",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Get Idea",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "message_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/idea.GetIdeaResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message.comment.List": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "message:read",
+                            "message:admin"
+                        ]
+                    }
+                ],
+                "description": "메시지의 댓글리스트를 조회한다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Get Message Comment List",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "message_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/message.GetMessageCommentListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message.comment.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "message:write",
+                            "message:admin"
+                        ]
+                    }
+                ],
+                "description": "메시지 댓글을 생성한다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Create Message Comment",
+                "parameters": [
+                    {
+                        "description": "CreateMessageCommentParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/message.CreateMessageCommentParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/message.CreateMessageCommentResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message.comment.remove": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "message:write",
+                            "message:admin"
+                        ]
+                    }
+                ],
+                "description": "메시지 댓글을 삭제한다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Delete Message Comment",
+                "parameters": [
+                    {
+                        "description": "DeleteMessageCommentParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/message.DeleteMessageCommentParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/message.DeleteMessageCommentResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "message:write",
+                            "message:admin"
+                        ]
+                    }
+                ],
+                "description": "메시지를 생성(등)한다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Create message",
+                "parameters": [
+                    {
+                        "description": "CreateMessageParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/message.CreateMessageParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/message.CreateMessageResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message.delete": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "message:write",
+                            "message:admin"
+                        ]
+                    }
+                ],
+                "description": "메시지를 삭제한다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Delete message",
+                "parameters": [
+                    {
+                        "description": "DeleteMessageParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/message.DeleteMessageParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/message.DeleteMessageResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message.info": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "message:read",
+                            "message:admin"
+                        ]
+                    }
+                ],
+                "description": "메시지의 단건을 조회한다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Get Message",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "message_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/message.GetMessageResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "message:read",
+                            "message:admin"
+                        ]
+                    }
+                ],
+                "description": "메시지의 리스트를 가져온다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Get Message List",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "channel_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/message.GetMessageListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message.reaction.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "message:write",
+                            "message:admin"
+                        ]
+                    }
+                ],
+                "description": "메시지 리액션을 추가한다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Create Message Reaction",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.GetWorkspaceListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/message.reaction.delete": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "message:write",
+                            "message:admin"
+                        ]
+                    }
+                ],
+                "description": "메시지 리액션을 삭제한다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Message"
+                ],
+                "summary": "Delete Message Reaction",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.GetWorkspaceListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/project.bucket.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "project:write",
+                            "project:admin"
+                        ]
+                    }
+                ],
+                "description": "update projectBucket",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProjectBucket"
+                ],
+                "summary": "Update ProjectBucket",
+                "parameters": [
+                    {
+                        "description": "AddProjectBucketParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AddProjectBucketParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.AddProjectBucketResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/project.bucket.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "project:read",
+                            "project:admin"
+                        ]
+                    }
+                ],
+                "description": "get projectBucket",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProjectBucket"
+                ],
+                "summary": "List ProjectBucket",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "project_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.GetProjectBucketListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/project.bucket.update": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "project:write",
+                            "project:admin"
+                        ]
+                    }
+                ],
+                "description": "update projectBucket",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "ProjectBucket"
+                ],
+                "summary": "Update ProjectBucket",
+                "parameters": [
+                    {
+                        "description": "PutProjectBucketParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.PutProjectBucketParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.PutProjectBucketResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/project.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "project:write",
+                            "project:admin"
+                        ]
+                    }
+                ],
+                "description": "create project",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Create project",
+                "parameters": [
+                    {
+                        "description": "AddProjectParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AddProjectParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.AddProjectResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/project.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "project:read",
+                            "project:admin"
+                        ]
+                    }
+                ],
+                "description": "프로젝트의 리스트를 가져온다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Get project List",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ws_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.GetProjectListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/project.tagList": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "project:read",
+                            "project:admin"
+                        ]
+                    }
+                ],
+                "description": "프로젝트의 테그들을 얻어온다.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Get project tags",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ws_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "prj_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetProjectTagListResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/project.update": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "project:write",
+                            "project:admin"
+                        ]
+                    }
+                ],
+                "description": "update project",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Project"
+                ],
+                "summary": "Update project",
+                "parameters": [
+                    {
+                        "description": "PutProjectParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.PutProjectParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.PutProjectResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.checklist.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 체크리스트 생성",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Add task checklist",
+                "parameters": [
+                    {
+                        "description": "taskCheckList",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/task.AddTaskCheckListParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/task.AddTaskCheckListResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.checklist.delete": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 체크리스트 삭제",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Delete task checklist",
+                "parameters": [
+                    {
+                        "description": "taskCheckList",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/task.DelTaskCheckListParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/task.DelTaskCheckListResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.checklist.info": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:read",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 체크리스트 목록",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get task checklist lists",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/task.GetTaskCheckListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.checklist.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:read",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 체크리스트 리스트",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get task checklist list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "task_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/task.GetTaskCheckListListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.checklist.update": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 체크리스트 수정",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Update task checklist",
+                "parameters": [
+                    {
+                        "description": "taskCheckList",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/task.PutTaskCheckListParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/task.PutTaskCheckListResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.copy": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 복사",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Copy task",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/task.CopyTaskResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "create task",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Create Task",
+                "parameters": [
+                    {
+                        "description": "AddTaskParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/task.AddTaskParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/task.AddTaskResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.delete": {
+            "delete": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 삭제",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Delete task",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/task.DelTaskResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.info": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:read",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 상세정보",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get task Info",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/task.GetTaskInfoResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:read",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "모든 프로젝트 업무 목록",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get task list of all projects",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "ws_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/task.GetTaskListAllProjectResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.listByColumn": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:read",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "컬럼별 업무 목록",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get task list by column",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "project_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "bucket_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/task.GetTaskListByColumnResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.listByProject": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:read",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "프로젝트 별 업무 목록",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get task list per project",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ws_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "name": "project_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/task.GetTaskListProjectResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.move": {
+            "put": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 이동",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Move task",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/task.MoveTaskResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/task.myTaskList": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:read",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "나의 업무 목록",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get task list of mine",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ws_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/task.GetTaskListMineResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/workspace.invite": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "workspace:write",
+                            "workspace:admin"
+                        ]
+                    }
+                ],
+                "description": "add workspace invite",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "Add Workspace Invite",
+                "parameters": [
+                    {
+                        "description": "AddWorkspaceInviteParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AddWorkspaceInviteParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.WorkspaceInviteResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/workspace.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "workspace:read",
+                            "workspace:admin"
+                        ]
+                    }
+                ],
+                "description": "get workspace list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "List Workspace",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.GetWorkspaceListResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/workspace.update": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "workspace:write",
+                            "workspace:admin"
+                        ]
+                    }
+                ],
+                "description": "update workspace",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "Update Workspace",
+                "parameters": [
+                    {
+                        "description": "PutWorkspaceParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.PutWorkspaceParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.PutWorkspaceResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/workspace.user.info": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "workspace:read",
+                            "workspace:admin"
+                        ]
+                    }
+                ],
+                "description": "get workspace user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "Get Workspace User",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ws_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "name": "id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.WorkspaceUserResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "workspace:write",
+                            "workspace:admin"
+                        ]
+                    }
+                ],
+                "description": "update workspace user",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Workspace"
+                ],
+                "summary": "Update Workspace User",
+                "parameters": [
+                    {
+                        "description": "PutWorkspaceUserParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.PutWorkspaceUserParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.PutWorkspaceUserResponse"
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sample": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "write",
+                            "admin"
+                        ]
+                    }
+                ],
+                "description": "get sample",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Get Sample",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "msg_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.GetSampleResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sample.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "write",
+                            "admin"
+                        ]
+                    }
+                ],
+                "description": "add sample",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Add Sample",
+                "parameters": [
+                    {
+                        "description": "AddSampleParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AddSampleParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.AddSampleResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sample.delete": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "write",
+                            "admin"
+                        ]
+                    }
+                ],
+                "description": "del sample",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Del Sample",
+                "parameters": [
+                    {
+                        "description": "PutSampleParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.PutSampleParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.DelSampleResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sample.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "write",
+                            "admin"
+                        ]
+                    }
+                ],
+                "description": "get sample",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "List Sample",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "ch_id",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.GetSampleListResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/sample.update": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "write",
+                            "admin"
+                        ]
+                    }
+                ],
+                "description": "put sample",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Sample"
+                ],
+                "summary": "Put Sample",
+                "parameters": [
+                    {
+                        "description": "PutSampleParam",
+                        "name": "payload",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.PutSampleParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.PutSampleResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task.assignee.add": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Implicit": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 담당자 추가/팔로우",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Add an assigned member",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/task.AddTaskAssigneeResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task.assignee.remove": {
+            "delete": {
+                "security": [
+                    {
+                        "OAuth2Implicit": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 담당자 삭제/언팔로우",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Delete an assigned member",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/task.DelTaskAssigneeResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task.comment.create": {
+            "post": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 댓글 등록",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Add comment",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/task.AddTaskCommentResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task.comment.list": {
+            "get": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:read",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 댓글 목록",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get comment lists",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "task_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "name": "offset",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/task.GetTaskCommentResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task.comment.remove": {
+            "delete": {
+                "security": [
+                    {
+                        "OAuth2Application": []
+                    },
+                    {
+                        "OAuth2Application": [
+                            "task:write",
+                            "task:admin"
+                        ]
+                    }
+                ],
+                "description": "업무 댓글 삭제",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Delete comment",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The maximum number of items to return",
+                        "name": "page",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/task.DelTaskCommentResponse"
+                            }
+                        },
+                        "headers": {
+                            "Token": {
+                                "type": "string",
+                                "description": "qwerty"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "idea.Comment": {
+            "type": "object",
+            "properties": {
+                "comment_id": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "idea.CreateIdeaCommentParam": {
+            "type": "object",
+            "required": [
+                "content",
+                "idea_id"
+            ],
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "idea_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "idea.CreateIdeaCommentResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/idea.Comment"
+                }
+            }
+        },
+        "idea.CreateIdeaParam": {
+            "type": "object",
+            "required": [
+                "channelID",
+                "content"
+            ],
+            "properties": {
+                "channelID": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "idea.CreateIdeaResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/idea.Idea"
+                }
+            }
+        },
+        "idea.DelIdeaCommentParam": {
+            "type": "object",
+            "required": [
+                "comment_id"
+            ],
+            "properties": {
+                "comment_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "idea.DelIdeaCommentResponse": {
+            "type": "object"
+        },
+        "idea.DelIdeaParam": {
+            "type": "object",
+            "required": [
+                "idea_id"
+            ],
+            "properties": {
+                "idea_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "idea.DelIdeaResponse": {
+            "type": "object"
+        },
+        "idea.GetIdeaCommentListParam": {
+            "type": "object",
+            "required": [
+                "ch_id",
+                "idea_id",
+                "limit"
+            ],
+            "properties": {
+                "ch_id": {
+                    "type": "string"
+                },
+                "idea_id": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "string"
+                }
+            }
+        },
+        "idea.GetIdeaCommentListResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/idea.Comment"
+                    }
+                }
+            }
+        },
+        "idea.GetIdeaListParam": {
+            "type": "object",
+            "required": [
+                "ch_id",
+                "limit"
+            ],
+            "properties": {
+                "ch_id": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "string"
+                }
+            }
+        },
+        "idea.GetIdeaListResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/idea.Idea"
+                    }
+                }
+            }
+        },
+        "idea.GetIdeaParam": {
+            "type": "object",
+            "required": [
+                "message_id"
+            ],
+            "properties": {
+                "message_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "idea.GetIdeaResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/idea.Idea"
+                }
+            }
+        },
+        "idea.Idea": {
+            "type": "object",
+            "properties": {
+                "ch_id": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "idea_id": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "message.Comment": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "message.CreateMessageCommentParam": {
+            "type": "object",
+            "required": [
+                "channel_id",
+                "content",
+                "message_id"
+            ],
+            "properties": {
+                "channel_id": {
+                    "type": "string",
+                    "example": "1d1d21e4g23"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "message_id": {
+                    "type": "string",
+                    "example": "13g2g324e3g3"
+                }
+            }
+        },
+        "message.CreateMessageCommentResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/message.Comment"
+                }
+            }
+        },
+        "message.CreateMessageParam": {
+            "type": "object",
+            "required": [
+                "content"
+            ],
+            "properties": {
+                "channel_id": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                }
+            }
+        },
+        "message.CreateMessageResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/message.Message"
+                }
+            }
+        },
+        "message.DeleteMessageCommentParam": {
+            "type": "object",
+            "required": [
+                "cmt_id"
+            ],
+            "properties": {
+                "cmt_id": {
+                    "type": "string",
+                    "example": "120f23p9gj"
+                }
+            }
+        },
+        "message.DeleteMessageCommentResponse": {
+            "type": "object"
+        },
+        "message.DeleteMessageParam": {
+            "type": "object",
+            "required": [
+                "message_id"
+            ],
+            "properties": {
+                "message_id": {
+                    "type": "string",
+                    "example": "39fni2g9ng2g34gq34"
+                }
+            }
+        },
+        "message.DeleteMessageResponse": {
+            "type": "object"
+        },
+        "message.GetMessageCommentListParam": {
+            "type": "object",
+            "required": [
+                "limit",
+                "message_id",
+                "offset"
+            ],
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "example": 10
+                },
+                "message_id": {
+                    "type": "string",
+                    "example": "29gjle49g349g4g239"
+                },
+                "offset": {
+                    "type": "string",
+                    "example": "139f3f12309fj12"
+                }
+            }
+        },
+        "message.GetMessageCommentListResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/message.Comment"
+                    }
+                }
+            }
+        },
+        "message.GetMessageListParam": {
+            "type": "object",
+            "required": [
+                "channel_id",
+                "limit",
+                "offset"
+            ],
+            "properties": {
+                "channel_id": {
+                    "type": "string",
+                    "example": "3129glisae94g349gl"
+                },
+                "limit": {
+                    "type": "integer",
+                    "example": 3
+                },
+                "offset": {
+                    "type": "string",
+                    "example": "23fga4p9gapj"
+                }
+            }
+        },
+        "message.GetMessageListResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/message.Message"
+                    }
+                }
+            }
+        },
+        "message.GetMessageParam": {
+            "type": "object",
+            "required": [
+                "message_id"
+            ],
+            "properties": {
+                "message_id": {
+                    "type": "string",
+                    "example": "19gj01mlir939jlks"
+                }
+            }
+        },
+        "message.GetMessageResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "$ref": "#/definitions/message.Message"
+                }
+            }
+        },
+        "message.Message": {
+            "type": "object",
+            "properties": {
+                "ch_id": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AddChannelParam": {
+            "type": "object",
+            "required": [
+                "name",
+                "ws_id"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "example": "채널2 설명입니당"
+                },
+                "hide_prev_chat": {
+                    "type": "integer"
+                },
+                "is_private": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "name": {
+                    "type": "string",
+                    "example": "채널2"
+                },
+                "user_ids": {
+                    "type": "string",
+                    "example": "1908210134210XIiU3W"
+                },
+                "ws_id": {
+                    "type": "string",
+                    "example": "2002130601276977jqA"
+                }
+            }
+        },
+        "model.AddChannelResponse": {
+            "type": "object",
+            "properties": {
+                "channel": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.ChannelResponse"
+                }
+            }
+        },
+        "model.AddChannelUserInviteParam": {
+            "type": "object",
+            "required": [
+                "ch_id",
+                "user_ids"
+            ],
+            "properties": {
+                "ch_id": {
+                    "type": "string",
+                    "example": "200211072219662AoSt"
+                },
+                "user_ids": {
+                    "type": "string",
+                    "example": "190826072741481FcvV,191120042719809wVlw"
+                }
+            }
+        },
+        "model.AddChannelUserInviteResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "model.AddDirectChannelParam": {
+            "type": "object",
+            "required": [
+                "ws_id"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "example": "Direct 설명입니당"
+                },
+                "hide_prev_chat": {
+                    "type": "integer"
+                },
+                "user_ids": {
+                    "type": "string",
+                    "example": "1908210134210XIiU3W"
+                },
+                "ws_id": {
+                    "type": "string",
+                    "example": "2002130601276977jqA"
+                }
+            }
+        },
+        "model.AddDirectChannelResponse": {
+            "type": "object",
+            "properties": {
+                "channel": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.ChannelResponse"
+                },
+                "is_create": {
+                    "type": "boolean"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "model.AddProjectBucketParam": {
+            "type": "object",
+            "required": [
+                "name",
+                "project_id"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AddProjectBucketResponse": {
+            "type": "object",
+            "properties": {
+                "project_bucket": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.AddProjectBucketResponseInfo"
+                }
+            }
+        },
+        "model.AddProjectBucketResponseInfo": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AddProjectParam": {
+            "type": "object",
+            "required": [
+                "name",
+                "ws_id"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "example": "m416"
+                },
+                "is_private": {
+                    "type": "boolean",
+                    "example": false
+                },
+                "name": {
+                    "type": "string",
+                    "example": "boot camp"
+                },
+                "user_ids": {
+                    "type": "string",
+                    "example": "190826072741481FcvV,191120042719809wVlw"
+                },
+                "ws_id": {
+                    "type": "string",
+                    "example": "2001210215096173faX"
+                }
+            }
+        },
+        "model.AddProjectResponse": {
+            "type": "object",
+            "required": [
+                "project"
+            ],
+            "properties": {
+                "project": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.ProjectResponse"
+                }
+            }
+        },
+        "model.AddSampleParam": {
+            "type": "object",
+            "required": [
+                "ch_id",
+                "content"
+            ],
+            "properties": {
+                "ch_id": {
+                    "type": "string",
+                    "example": "19gj01mlir939jlks"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "first_flag": {
+                    "type": "boolean"
+                },
+                "number": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.AddSampleResponse": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "type": "string"
+                },
+                "msg_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.AddWorkspaceInviteParam": {
+            "type": "object",
+            "required": [
+                "email",
+                "id"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "user1@gmail.com,user2@gmail.com"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "2001210215096173faX"
+                }
+            }
+        },
+        "model.ChannelResponse": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "hide_prev_chat": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_archive": {
+                    "type": "boolean"
+                },
+                "is_favorite": {
+                    "type": "boolean"
+                },
+                "is_hidden": {
+                    "type": "boolean"
+                },
+                "is_member": {
+                    "type": "boolean"
+                },
+                "is_private": {
+                    "type": "boolean"
+                },
+                "mgr_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.DelSampleResponse": {
+            "type": "object",
+            "properties": {
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "model.GetChannelListParam": {
+            "type": "object",
+            "required": [
+                "limit",
+                "offset",
+                "ws_id"
+            ],
+            "properties": {
+                "exclude_archived": {
+                    "type": "boolean"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "types": {
+                    "type": "string",
+                    "example": "pub,pri,oto,me"
+                },
+                "ws_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetChannelListResponse": {
+            "type": "object",
+            "properties": {
+                "channels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ChannelResponse"
+                    }
+                }
+            }
+        },
+        "model.GetChannelParam": {
+            "type": "object",
+            "required": [
+                "ch_id",
+                "ws_id"
+            ],
+            "properties": {
+                "ch_id": {
+                    "type": "string",
+                    "example": "20020409515949841"
+                },
+                "ws_id": {
+                    "type": "string",
+                    "example": "2002130601276977jqA"
+                }
+            }
+        },
+        "model.GetChannelResponse": {
+            "type": "object",
+            "properties": {
+                "channel": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.ChannelResponse"
+                }
+            }
+        },
+        "model.GetChannelUserJoinableListParam": {
+            "type": "object",
+            "required": [
+                "ch_id",
+                "limit",
+                "offset"
+            ],
+            "properties": {
+                "ch_id": {
+                    "type": "string",
+                    "example": "200211072219662AoSt"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetChannelUserJoinableListResponse": {
+            "type": "object",
+            "properties": {
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "model.GetChannelUserListParam": {
+            "type": "object",
+            "required": [
+                "ch_id",
+                "limit",
+                "offset"
+            ],
+            "properties": {
+                "ch_id": {
+                    "type": "string",
+                    "example": "200211072219662AoSt"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetChannelUserListResponse": {
+            "type": "object",
+            "properties": {
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "model.GetProjectBucketListParam": {
+            "type": "object",
+            "required": [
+                "project_id"
+            ],
+            "properties": {
+                "project_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetProjectBucketListResponse": {
+            "type": "object",
+            "properties": {
+                "project_buckets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.GetProjectBucketResponseInfo"
+                    }
+                }
+            }
+        },
+        "model.GetProjectBucketResponseInfo": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "modified": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetProjectListParam": {
+            "type": "object",
+            "required": [
+                "limit",
+                "offset",
+                "ws_id"
+            ],
+            "properties": {
+                "limit": {
+                    "type": "integer",
+                    "example": 100
+                },
+                "offset": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "ws_id": {
+                    "type": "string",
+                    "example": "2002130601276977jqA"
+                }
+            }
+        },
+        "model.GetProjectListResponse": {
+            "type": "object",
+            "properties": {
+                "projects": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectResponse"
+                    }
+                }
+            }
+        },
+        "model.GetProjectTagListParam": {
+            "type": "object",
+            "required": [
+                "prj_id",
+                "ws_id"
+            ],
+            "properties": {
+                "prj_id": {
+                    "type": "string"
+                },
+                "ws_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetProjectTagListResponse": {
+            "type": "object",
+            "properties": {
+                "projectTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.ProjectTagResponse"
+                    }
+                }
+            }
+        },
+        "model.GetSampleListParam": {
+            "type": "object",
+            "required": [
+                "ch_id"
+            ],
+            "properties": {
+                "ch_id": {
+                    "type": "string",
+                    "example": "19gj01mlir939jlks"
+                }
+            }
+        },
+        "model.GetSampleListResponse": {
+            "type": "object",
+            "properties": {
+                "samples": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.SampleResponse"
+                    }
+                }
+            }
+        },
+        "model.GetSampleParam": {
+            "type": "object",
+            "required": [
+                "msg_id"
+            ],
+            "properties": {
+                "msg_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetSampleResponse": {
+            "type": "object",
+            "properties": {
+                "sample": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.SampleResponse"
+                }
+            }
+        },
+        "model.GetTaskCommentListParam": {
+            "type": "object",
+            "required": [
+                "task_id"
+            ],
+            "properties": {
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "task_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.GetWorkspaceListParam": {
+            "type": "object",
+            "required": [
+                "limit",
+                "offset"
+            ],
+            "properties": {
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.GetWorkspaceListResponse": {
+            "type": "object",
+            "properties": {
+                "workspaces": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.WorkspaceResponse"
+                    }
+                }
+            }
+        },
+        "model.GetWorkspaceUserParam": {
+            "type": "object",
+            "required": [
+                "id",
+                "ws_id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "191120042719809wVlw"
+                },
+                "ws_id": {
+                    "type": "string",
+                    "example": "2001210215096173faX"
+                }
+            }
+        },
+        "model.ProjectResponse": {
+            "type": "object",
+            "properties": {
+                "access": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "is_archive": {
+                    "type": "boolean"
+                },
+                "is_favorite": {
+                    "type": "boolean"
+                },
+                "mgr_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "prj_id": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.ProjectTagResponse": {
+            "type": "object",
+            "properties": {
+                "created": {
+                    "type": "string"
+                },
+                "tag_data": {
+                    "type": "string"
+                },
+                "tag_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.PutChannelParam": {
+            "type": "object",
+            "required": [
+                "ch_id",
+                "name",
+                "ws_id"
+            ],
+            "properties": {
+                "ch_id": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "hide_prev_chat": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "ws_id": {
+                    "type": "string",
+                    "example": "2002130601276977jqA"
+                }
+            }
+        },
+        "model.PutChannelResponse": {
+            "type": "object",
+            "properties": {
+                "channel": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.ChannelResponse"
+                }
+            }
+        },
+        "model.PutProjectBucketParam": {
+            "type": "object",
+            "required": [
+                "bucket_id",
+                "name",
+                "project_id"
+            ],
+            "properties": {
+                "bucket_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.PutProjectBucketResponse": {
+            "type": "object",
+            "properties": {
+                "project_bucket": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.PutProjectBucketResponseInfo"
+                }
+            }
+        },
+        "model.PutProjectBucketResponseInfo": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "modified": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.PutProjectParam": {
+            "type": "object",
+            "required": [
+                "name",
+                "prj_id",
+                "ws_id"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "example": "today is my day"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "V8"
+                },
+                "prj_id": {
+                    "type": "string",
+                    "example": "200211072219662AoSt"
+                },
+                "ws_id": {
+                    "type": "string",
+                    "example": "2001210215096173faX"
+                }
+            }
+        },
+        "model.PutProjectResponse": {
+            "type": "object",
+            "required": [
+                "project"
+            ],
+            "properties": {
+                "project": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.ProjectResponse"
+                }
+            }
+        },
+        "model.PutSampleParam": {
+            "type": "object",
+            "required": [
+                "ch_id",
+                "msg_id"
+            ],
+            "properties": {
+                "ch_id": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "first_flag": {
+                    "type": "boolean"
+                },
+                "msg_id": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.PutSampleResponse": {
+            "type": "object",
+            "properties": {
+                "modified": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.PutWorkspaceParam": {
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "2001210215096173faX"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "testworkspace"
+                }
+            }
+        },
+        "model.PutWorkspaceResponse": {
+            "type": "object",
+            "properties": {
+                "workspace": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.WorkspaceResponse"
+                }
+            }
+        },
+        "model.PutWorkspaceUserParam": {
+            "type": "object",
+            "required": [
+                "ws_id"
+            ],
+            "properties": {
+                "department": {
+                    "type": "string",
+                    "example": "backend"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "joakim"
+                },
+                "status_msg": {
+                    "type": "string",
+                    "example": "chilling"
+                },
+                "tel": {
+                    "type": "string",
+                    "example": "+82)1011112222"
+                },
+                "ws_id": {
+                    "type": "string",
+                    "example": "2001210215096173faX"
+                }
+            }
+        },
+        "model.PutWorkspaceUserResponse": {
+            "type": "object",
+            "properties": {
+                "user": {
+                    "type": "object",
+                    "$ref": "#/definitions/model.WorkspaceUserResponse"
+                }
+            }
+        },
+        "model.SampleResponse": {
+            "type": "object",
+            "properties": {
+                "ch_id": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "first_flag": {
+                    "type": "boolean"
+                },
+                "modified": {
+                    "type": "string"
+                },
+                "msg_id": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "integer"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.WorkspaceInviteResponse": {
+            "type": "object",
+            "properties": {
+                "fail": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "test3@swit.io"
+                    ]
+                },
+                "success": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "test1@swit.io",
+                        "test2@swit.io"
+                    ]
+                }
+            }
+        },
+        "model.WorkspaceResponse": {
+            "type": "object",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "example": "#00FF00"
+                },
+                "created": {
+                    "type": "string",
+                    "example": "2020-02-03 01:31:37"
+                },
+                "domain": {
+                    "type": "string",
+                    "example": "haileystandard000"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "2001210215096173faX"
+                },
+                "manager_ids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "['191120042719809wVlw'",
+                        " '191219090923105vS3L']"
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "example": "haileystandard000"
+                },
+                "open_type": {
+                    "type": "integer",
+                    "example": 10
+                },
+                "owner_id": {
+                    "type": "string",
+                    "example": "190826072741481FcvV"
+                },
+                "photo": {
+                    "type": "string",
+                    "example": "https://files.swit.io/image"
+                },
+                "refer_group": {
+                    "type": "integer",
+                    "example": 10
+                }
+            }
+        },
+        "model.WorkspaceUserResponse": {
+            "type": "object",
+            "properties": {
+                "color": {
+                    "type": "string",
+                    "example": "#00FF00"
+                },
+                "created": {
+                    "type": "string",
+                    "example": "2020-02-03 01:31:37"
+                },
+                "department": {
+                    "type": "string",
+                    "example": "backend"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "191120042719809wVlw"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "jenny"
+                },
+                "photo": {
+                    "type": "string",
+                    "example": "https://files.swit.io/image"
+                },
+                "role": {
+                    "type": "string",
+                    "example": "mem"
+                },
+                "status": {
+                    "type": "string",
+                    "example": "act"
+                },
+                "status_msg": {
+                    "type": "string",
+                    "example": "my status"
+                },
+                "tel": {
+                    "type": "string",
+                    "example": "+82)1112223333"
+                },
+                "ws_id": {
+                    "type": "string",
+                    "example": "2001210215096173faX"
+                }
+            }
+        },
+        "task.AddTaskAssigneeResponse": {
+            "type": "object",
+            "properties": {
+                "taskAssignee": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskAssigneeResponse"
+                }
+            }
+        },
+        "task.AddTaskCheckListParam": {
+            "type": "object",
+            "required": [
+                "contents",
+                "task_id"
+            ],
+            "properties": {
+                "contents": {
+                    "type": "string"
+                },
+                "task_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.AddTaskCheckListResponse": {
+            "type": "object",
+            "properties": {
+                "taskChecklist": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskChecklistResponse"
+                }
+            }
+        },
+        "task.AddTaskCommentResponse": {
+            "type": "object",
+            "properties": {
+                "taskComment": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskCommentResponse"
+                }
+            }
+        },
+        "task.AddTaskParam": {
+            "type": "object",
+            "required": [
+                "log_title",
+                "prj_id"
+            ],
+            "properties": {
+                "log_desc": {
+                    "type": "string"
+                },
+                "log_title": {
+                    "type": "string"
+                },
+                "prj_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.AddTaskResponse": {
+            "type": "object",
+            "properties": {
+                "task": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskResponse"
+                }
+            }
+        },
+        "task.CopyTaskResponse": {
+            "type": "object",
+            "properties": {
+                "task": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskResponse"
+                }
+            }
+        },
+        "task.DelTaskAssigneeResponse": {
+            "type": "object",
+            "properties": {
+                "taskAssignee": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskAssigneeResponse"
+                }
+            }
+        },
+        "task.DelTaskCheckListParam": {
+            "type": "object",
+            "required": [
+                "id",
+                "task_id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "task_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.DelTaskCheckListResponse": {
+            "type": "object"
+        },
+        "task.DelTaskCommentResponse": {
+            "type": "object",
+            "properties": {
+                "taskComment": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskCommentResponse"
+                }
+            }
+        },
+        "task.DelTaskResponse": {
+            "type": "object",
+            "properties": {
+                "task": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskResponse"
+                }
+            }
+        },
+        "task.GetTaskCheckListListResponse": {
+            "type": "object",
+            "properties": {
+                "taskChecklist": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/task.TaskChecklistResponse"
+                    }
+                },
+                "total_rows": {
+                    "type": "integer"
+                }
+            }
+        },
+        "task.GetTaskCheckListParam": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.GetTaskCheckListResponse": {
+            "type": "object",
+            "properties": {
+                "taskChecklist": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskChecklistResponse"
+                }
+            }
+        },
+        "task.GetTaskChecklistlistParam": {
+            "type": "object",
+            "required": [
+                "task_id"
+            ],
+            "properties": {
+                "task_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.GetTaskCommentResponse": {
+            "type": "object",
+            "properties": {
+                "taskComments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/task.TaskCommentResponse"
+                    }
+                }
+            }
+        },
+        "task.GetTaskInfoParam": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.GetTaskInfoResponse": {
+            "type": "object",
+            "properties": {
+                "task": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskResponse"
+                }
+            }
+        },
+        "task.GetTaskListAllProjectParam": {
+            "type": "object",
+            "properties": {
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "ws_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.GetTaskListAllProjectResponse": {
+            "type": "object",
+            "properties": {
+                "tasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/task.TaskResponse"
+                    }
+                }
+            }
+        },
+        "task.GetTaskListByColumnParam": {
+            "type": "object",
+            "required": [
+                "bucket_id",
+                "project_id"
+            ],
+            "properties": {
+                "bucket_id": {
+                    "type": "string"
+                },
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "project_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.GetTaskListByColumnResponse": {
+            "type": "object",
+            "properties": {
+                "tasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/task.TaskResponse"
+                    }
+                }
+            }
+        },
+        "task.GetTaskListMineParam": {
+            "type": "object",
+            "properties": {
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "ws_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.GetTaskListMineResponse": {
+            "type": "object",
+            "properties": {
+                "tasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/task.TaskResponse"
+                    }
+                }
+            }
+        },
+        "task.GetTaskListProjectParam": {
+            "type": "object",
+            "required": [
+                "project_id"
+            ],
+            "properties": {
+                "limit": {
+                    "type": "integer"
+                },
+                "offset": {
+                    "type": "integer"
+                },
+                "project_id": {
+                    "type": "string"
+                },
+                "ws_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.GetTaskListProjectResponse": {
+            "type": "object",
+            "properties": {
+                "tasks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/task.TaskResponse"
+                    }
+                }
+            }
+        },
+        "task.MoveTaskResponse": {
+            "type": "object",
+            "properties": {
+                "task": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskResponse"
+                }
+            }
+        },
+        "task.PutTaskCheckListParam": {
+            "type": "object",
+            "required": [
+                "completed",
+                "contents",
+                "id",
+                "task_id"
+            ],
+            "properties": {
+                "completed": {
+                    "type": "string"
+                },
+                "contents": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "task_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.PutTaskCheckListResponse": {
+            "type": "object",
+            "properties": {
+                "taskChecklist": {
+                    "type": "object",
+                    "$ref": "#/definitions/task.TaskChecklistResponse"
+                }
+            }
+        },
+        "task.TaskAssigneeResponse": {
+            "type": "object",
+            "properties": {
+                "assign": {
+                    "type": "string"
+                },
+                "follow": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.TaskChecklistResponse": {
+            "type": "object",
+            "properties": {
+                "completed": {
+                    "type": "integer"
+                },
+                "contents": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "modified": {
+                    "type": "string"
+                },
+                "task_id": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.TaskCommentResponse": {
+            "type": "object",
+            "properties": {
+                "content": {
+                    "type": "string"
+                },
+                "created": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "modified": {
+                    "type": "string"
+                },
+                "task_id": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        },
+        "task.TaskResponse": {
+            "type": "object",
+            "properties": {
+                "bookmark": {
+                    "type": "string"
+                },
+                "bucket_id": {
+                    "type": "string"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "end_date": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
+                },
+                "project_id": {
+                    "type": "string"
+                },
+                "start_date": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "user_id": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "OAuth2Application": {
+            "type": "oauth2",
+            "flow": "accessCode",
+            "authorizationUrl": "https://app.swit.dev/oauth/authorize",
+            "tokenUrl": "https://app.swit.dev/oauth/token",
+            "scopes": {
+                "channel:admin": "",
+                "channel:read": "",
+                "channel:write": "",
+                "idea:admin": "",
+                "idea:read": "",
+                "idea:write": "",
+                "message:admin": "",
+                "message:read": "",
+                "message:write": "",
+                "project:admin": "",
+                "project:read": "",
+                "project:write": "",
+                "task:admin": "",
+                "task:read": "",
+                "task:write": "",
+                "workspace:admin": "",
+                "workspace:read": "",
+                "workspace:write": ""
+            }
+        },
+        "OAuth2Implicit": {
+            "type": "oauth2",
+            "flow": "implicit",
+            "authorizationUrl": "https://app.swit.dev/oauth/authorize",
+            "scopes": {
+                "admin": " Grants read and write access to administrative information",
+                "write": " Grants write access"
+            }
+        }
+    }
+}
